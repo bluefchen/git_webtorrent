@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" style="overflow: hidden;height: 100%">
+<head>
+    <meta charset="UTF-8">
+    <title>CityBIMDemo</title>
+
+    <!--<script src="lib/stringParser.js"></script>-->
+    <script src="lib/three.min.js"></script>
+    <script src="lib/stats.js"></script>
+    <script src="lib/FirstPersonControls.js"></script>
+    <script src="lib/TouchFPC.js"></script>
+    <script src="lib/MyFPC.js"></script>
+    <script src="lib/tween.min.js"></script>
+    <script src="lib/OBJLoader.js"></script>
+
+    <script src="lib/jquery-3.1.0.min.js"></script>
+    <script src="lib/dat.gui.js"></script>
+    <script src="lib/BoxGeometry.js"></script>
+    <script src="lib/OrbitControls.js"></script>
+    <script src="lib/TransformControls.js"></script>
+    <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="CSS/ShougangUICss.css" />
+    <link rel="stylesheet" type="text/css" href="lib/bootstrap/css/bootstrap.min.css" />
+    <script src="lib/socket.io.js"></script>
+
+
+    <script src="js/geometryCompute.js"></script>
+
+
+    <script src="js/ShougangMainThread0409_ClickPrecise.js"></script>
+     <!--<script src="js/CloneMesh&OcclusionCulling.js"></script>-->
+    <!--<script src="js/DoubleStepRender.js"></script>-->
+
+
+    <style>
+        body{
+            overflow-x: hidden;
+            overflow-y: hidden;
+            font-family: "Lucida Grande", "Microsoft JhengHei", "Microsoft YaHei"
+
+        }
+        .left{ width:15%; height:100%; position:absolute; left:0; top:0}
+        #WebGL-output{width:85%;position:absolute;left:15%;height:100%;z-index:0;}
+        #Stats-output{position:absolute;left:20%;z-index: 1}
+
+    </style>
+</head>
+
+<script type="text/javascript">
+    function displaySubMenu(li) {
+        var subMenu = li.getElementsByTagName("ul")[0];
+        subMenu.style.display = "block";
+    }
+    function hideSubMenu(li) {
+        var subMenu = li.getElementsByTagName("ul")[0];
+        subMenu.style.display = "none";
+    }
+
+</script>
+<body style="height: 100%;">
+
+<div class="nav left" style="height: 100%;display: inline-block;z-index:10; background-color: #555555">
+    <ul class="nav1" id="navigation">
+        <li class="li1 haizei"><a href="#">模型列表</a>
+            <ul class="nav2">
+                <!--<li class="li2"><button id="W">W</button></li>-->
+                <!--<li class="li2"><button id="T">T</button></li>-->
+                <li class="li2"><button id="W">01</button></li>
+                <li class="li2"><button id="Tongyan">02</button></li>
+                <!--<li class="li2"><button id="Schependomlaan">洋房</button></li>-->
+                <!--<li class="li2"><button id="D-ext">D座</button></li>-->
+            </ul>
+        </li>
+    </ul>
+</div>
+
+
+<div id="Stats-output">
+</div>
+<!-- Div which will hold the Output -->
+<div id="WebGL-output">
+</div>
+<div id="progress" class="fade">
+    <div id="view">
+        <div class="view-header">
+            加载中，请稍候...
+        </div>
+        <div class="view-content" id="progressLable">
+            0%
+        </div>
+        <br style="clear: both;">
+    </div>
+</div>
+<div id="triggerUI" class="fade">
+    <div id="triggerMenu">
+        <div class="view-header">
+            <br clear="both">
+        </div>
+        <div class="view-content">
+            <label>是否跳转到下一区域？</label>
+        </div>
+        <div class="menu-footer">
+            <button class="esc" id="cancel">取消</button>
+            <button class="submit" id="triggerJump">确定</button>
+            <br clear ="both">
+        </div>
+        <br style="clear:both;">
+    </div>
+</div>
+<div id="datUrl" style="display: none"></div>
+<div id="loadTime" style="display: none"></div>
+
+
+<script type="text/javascript" language="javascript">
+    {
+
+        function change(id_M,id_O){
+            document.getElementById('tongue_'+id_M).className ="btn btn-default current";
+            document.getElementById('tongue_content_'+id_M).style.display="block";
+            var id_o_List =String(id_O).split(',');
+            for (var x in id_o_List){
+                document.getElementById('tongue_content_'+id_o_List[x]).style.display="none";
+                document.getElementById('tongue_'+id_o_List[x]).className ="btn btn-default";
+            }
+        }
+    }
+
+    $(function(){
+        var screenWidth = window.screen.width;
+        if (screenWidth <= 1280) {
+            $("li").css("font-size","0.5em")
+        }
+    })
+
+</script>
+
+</body>
+
+</html>
