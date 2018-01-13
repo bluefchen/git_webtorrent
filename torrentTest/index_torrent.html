@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>WebTorrent video player</title>
+</head>
+<body>
+<div id="hero">
+    <div id="output">
+        <div id="progressBar"></div>
+        <!-- The video player will be added here -->
+    </div>
+    <!-- Statistics -->
+    <div id="status">
+        <div>
+            <span class="show-leech">Downloading </span>
+            <span class="show-seed">Seeding </span>
+            <code>
+                <!-- Informative link to the torrent file -->
+                <a id="torrentLink" href="https://webtorrent.io/torrents/sintel.torrent">sintel.torrent</a>
+            </code>
+            <span class="show-leech"> from </span>
+            <span class="show-seed"> to </span>
+            <code id="numPeers">0 peers</code>
+        </div>
+        <div>
+            <code id="downloaded"></code>
+            of <code id="total"></code>
+            — <span id="remaining"></span><br/>
+            &#x2198;<code id="downloadSpeed">0 b/s</code>
+            / &#x2197;<code id="uploadSpeed">0 b/s</code>
+        </div>
+        <div>
+            <code id="torrent_downloaded"></code>
+        </div>
+    </div>
+</div>
+<!-- Include the latest version of WebTorrent -->
+<script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+<!-- Moment is used to show human readable remaining time -->
+<script src="http://momentjs.com/downloads/moment.min.js"></script>
+<script src="./index_torrent.js"></script>
+<link rel="stylesheet" type="text/css" href="index_torrent.css">
+</body>
+</html>

@@ -1,0 +1,21 @@
+
+<html>
+<body>
+<script src="https://cdn.jsdelivr.net/webtorrent/latest/webtorrent.min.js"></script>
+<script>
+    var client = new WebTorrent()
+
+    client.add('http://localhost:1272/torrent/TongyanProject/resource.torrent',
+            function (torrent) {
+        // Got torrent metadata!
+        console.log('Client is downloading:', torrent.infoHash);
+                console.log(torrent);
+
+        torrent.files[0].appendTo('body')
+                console.log(typeof torrent.files[0] )
+
+    });
+
+</script>
+</body>
+</html>
